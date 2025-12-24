@@ -1,0 +1,43 @@
+.yp-learner-assgn-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+}
+.yp-learner-assgn-box .yp-learner-assgn-box-img-wrapper {
+  height: 180px;
+}
+.yp-learner-assgn-box .yp-learner-assgn-box-img-wrapper img {
+  height: 150px;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.yp-learner-assgn-box .yp-learner-assgn-box-content-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: -50px;
+  padding: 20px;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+.yp-learner-assgn-box-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.yp-learner-assgn-box-info-progress-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}

@@ -1,0 +1,898 @@
+#yp-learner-pages {
+  /* #region COMMON OVERRIDE */
+  /* #region Sidebar */
+  .yp-sidebar {
+      background-color: #faf9fb;
+      box-shadow: 0px 10px 15px 0px rgb(0 0 0 / 15%);
+
+      background: linear-gradient(177.87deg, #FCFBFD 10%, #FFFFFF 30%, #F6F3FA 54.39%, #E1D4EE 72.39%, #CFBAE5 100%);
+  }
+  .yp-sidebar-list {
+      padding: 20px 10px;
+  }
+  .yp-sidebar-list .yp-sidebar-item {
+      margin: 10px 0;
+      background-color: transparent;
+  }
+  .yp-sidebar-link {
+      background-color: transparent;
+      border-bottom: none;
+      padding: 16px 20px;
+      border-radius: 30px;
+  }
+    .yp-sidebar-link:hover {
+        background-color: #F4F1F7;
+    }
+  .yp-sidebar-link > span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #333333;
+  }
+  .yp-sidebar-item.dropdown > .dropdown-toggle::after {
+      color: #666666;
+  }
+  .yp-sidebar .yp-sidebar-icon {
+    font-size: 15px;
+  }
+  .yp-sidebar-item.dropdown .dropdown-menu {
+    background-color: transparent;
+    border-left: none;
+    margin: 10px 0px 10px 25px !important;
+  }
+  .yp-sidebar-item.dropdown .dropdown-menu .dropdown-item {
+    background-color: transparent;
+    border-left: 2px solid #e1e1e1;
+  }
+
+  .yp-sidebar-item.dropdown .dropdown-menu .dropdown-item {
+    padding: 10px 25px 10px 15px;
+  }
+  .yp-sidebar-item.dropdown .dropdown-menu .dropdown-item i {
+    display: none;
+  }
+
+  .yp-sidebar-item .yp-sidebar-link.active {
+    color: #ffffff;
+  }
+  .yp-sidebar-item .yp-sidebar-link.active .yp-sidebar-icon {
+    color: #ffffff;
+  }
+  .yp-sidebar-item .yp-sidebar-link.active > span {
+    color: #ffffff;
+  }
+  .yp-sidebar-item.dropdown > .dropdown-toggle.active::after {
+    color: #ffffff;
+  }
+  .yp-sidebar-item.dropdown .dropdown-menu .dropdown-item.active {
+    box-shadow: none;
+    border-left: 2px solid #3D0973;
+  }
+  /* #endregion Sidebar */
+
+  /* #region Card */
+  #yp-card-main-content-section {
+      box-shadow: none;
+      background-color: transparent;
+      padding: 0;
+  }
+
+  .yp-card-box-shadow {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  }
+  .yp-card-rounded {
+    border-radius: 6px;
+  }
+  /* #endregion Card */
+
+  /* #region Table */
+  .yp-card-rounded > .table-responsive {
+      border-radius: 6px;
+      border: 1px solid #D7D7D7;
+    }
+  .yp-custom-table > thead > tr > th {
+      background-color: #9882AE;
+      color: #ffffff;
+  }
+  .yp-custom-table > tbody > tr:first-child > td {
+      border-top: none;
+  }
+  .yp-custom-table > tbody > tr > td {
+    color: #3D3D3D;
+    border-top: 1px solid #D7D7D7;
+  }
+  .yp-custom-table > thead > tr > th {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .yp-custom-table > tbody > tr:last-child > td {
+      border-bottom: none;
+  }
+  .yp-custom-table > tbody > tr:hover > td {
+    background-color: #f9f3ff;
+  }
+  /* #endregion Table */
+  /* #endregion COMMON OVERRIDE */
+
+  /* #region LEARNER SPECIFIC PAGES */
+  /* #region Dashboard Stats & Leaderboard */
+  .yp-learner-dashboard-stat-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;    
+      gap: 10px;
+      height: 100%;
+      padding: 32px 32px;
+      border-radius: 15px;
+  }
+  .yp-learner-dashboard-stat-box .yp-learner-dsb-icon-circle {
+      width: 74px;
+      height: 74px;
+      display: inline-flex;
+      border-radius: 100%;
+      align-items: center;
+      justify-content: center;
+  }
+  .yp-learner-dashboard-stat-box .yp-learner-dsb-info-wrapper {
+      text-align: center;
+  }
+  .yp-learner-dashboard-stat-box .yp-learner-dsb-info-count {
+      font-size: 42px;
+      font-weight: 700;
+      color: #4B4B4B;
+  }
+  .yp-learner-dashboard-stat-box .yp-learner-dsb-info-text {
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 400;
+      color: #333333;
+  }
+
+  /* For Leaderboard  */
+  .yp-learner-dashboard-stat-boxes {
+      display: flex;
+      // flex-wrap: wrap; old
+      flex-wrap: nowrap;
+      gap: 20px;
+  }
+  .yp-learner-dashboard-stat-boxes-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+  }
+  .yp-learner-dashboard-stat-boxes-wrapper > div {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 208px;
+  }
+  .yp-learner-dashboard-leaderboard-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      flex-grow: 1;
+      min-width: 365px;
+      max-width: 100%;
+      min-height: 250px;
+      padding: 20px 20px 10px;
+      border-radius: 20px;
+
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: all 0.3s linear;
+  }
+
+  .yp-learner-dashboard-stat-boxes-wrapper {
+      flex-grow: 1;
+  }
+  .yp-learner-dashboard-stat-boxes-wrapper > div {
+    flex-grow: 1;
+  }
+  .yp-learner-dashboard-leaderboard-wrapper {
+    flex-grow: 0;
+    min-width: 350px;
+  }
+  .yp-sidebar-close .yp-learner-dashboard-leaderboard-wrapper {
+    min-width: 420px;
+  }
+
+  .yp-learner-dashboard-leaderboard-wrapper .yp-learner-leaderboard-bg {
+    position: absolute;
+    width: 100%;    
+    max-height: 100%;
+    top: 0px;
+    left: 0px;
+    object-fit: cover;
+    opacity: 0.4;
+    border-radius: 20px;
+  }
+  .yp-learner-dashboard-leaderboard-wrapper .yp-page-title-button-section {
+    flex-direction: row !important;
+    align-items: center !important;
+    row-gap: 5px;
+    column-gap: 10px;
+    margin-bottom: 10px;
+  }
+  .yp-learner-dashboard-leaderboard-wrapper .yp-page-title {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+  }
+  .yp-learner-dashboard-leaderboard-wrapper .yp-page-title-button-section .yp-page-button {
+    width: auto !important;
+  }
+  .yp-learner-myrank-badge {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    padding: 4px 15px;
+    background-color: #FFE650;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  }
+  .yp-learner-myrank-badge strong {
+    font-weight: 600;
+  }
+  .yp-leaderboard-result-section {
+    margin: 0px 0px 0px;
+  }
+  .yp-leaderboard-result-section p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333333;
+    padding: 40px 20px 0px;
+    text-align: center;
+  }
+  .yp-leaderboard-search-box {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .yp-leaderboard-winners-box {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 24px;
+  }
+  .yp-leaderboard-winners-box .yp-leaderboard-winner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 85px;
+  }
+  .yp-leaderboard-winners-box .yp-leaderboard-winner img {
+    max-width: 60px;
+  }
+  .yp-leaderboard-winners-box .yp-leaderboard-winner:nth-child(2) img {
+    width: 68px;
+    max-width: 68px;
+  }
+  .yp-leaderboard-winners-box .yp-leaderboard-winner div {
+      width: 100%;
+      font-size: 13px;
+      font-weight: 500;
+      color: #333333;
+      text-align: center;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-top: 2px;
+  }
+
+  .yp-leaderboard-winners-box .yp-leaderboard-winner.yp-leaderboard-winner-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  /* #endregion Dashboard Stats & Leaderboard */
+
+  /* #region Dashboard Banner */
+  #carouselDashboardBanner {
+    margin-bottom: 30px;
+  }
+  .yp-carousel .carousel-inner {
+    border-radius: 15px;
+  }
+  .yp-carousel .carousel-item {
+    min-height: 125px;
+    margin-top: 10px;
+    border-radius: 15px;
+    transition: transform .6s ease-in-out;
+  }
+  .yp-carousel .carousel-item > a img,
+  .yp-carousel .carousel-item > img {
+    width: 100%;
+    max-height: 125px;
+    min-height: 125px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  .yp-carousel .carousel-caption {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    text-align: left;
+    padding: 20px 30px;
+    border-radius: 15px;
+    z-index: 1;
+  }
+
+  .yp-carousel .carousel-caption h5 {
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+  .yp-carousel .carousel-caption p {
+    font-size: 31px;
+    line-height: normal;
+    font-weight: 300;
+    color: #565656;
+  }
+  .yp-carousel .carousel-control-prev,
+  .yp-carousel .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px;
+    margin: 10px 15px;
+    opacity: 0;
+    border-radius: 50%;
+    visibility: hidden;
+    transition: all 0.3s ease-in;
+  }
+  .yp-carousel:hover .carousel-control-prev,
+  .yp-carousel:hover .carousel-control-next {
+    visibility: visible;
+    opacity: 0.5;
+  }
+  .yp-carousel .carousel-control-prev:hover,
+  .yp-carousel .carousel-control-next:hover {
+    opacity: 1;
+  }
+  .yp-carousel .carousel-control-prev-icon,
+  .yp-carousel .carousel-control-next-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: none;
+    filter: none;
+  }
+  .yp-carousel .carousel-control-prev-icon i,
+  .yp-carousel .carousel-control-next-icon i {
+    font-size: 20px;
+    color: #ffffff;
+  }
+  .yp-carousel .carousel-indicators {
+    display: none;
+  }
+  .yp-carousel .carousel-indicators [data-bs-target] {
+    width: 20px;
+    height: 3px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    opacity: 1;
+  }
+
+  /* Style related to dashboard banner only */
+  #carouselDashboardBanner .carousel-inner {
+    background: none;
+  }
+  #carouselDashboardBanner .carousel-indicators {
+    justify-content: start;
+    bottom: 0px;
+    margin-right: 15%;
+    margin-left: 30px;
+  }
+  #carouselDashboardBanner .carousel-caption {
+    background: #F2EAFA;
+  }
+  #carouselDashboardBanner .carousel-caption .carousel-caption-info {
+    max-width: calc(100% - 150px);
+  }
+  #carouselDashboardBanner .carousel-caption h5,
+  #carouselDashboardBanner .carousel-caption p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  #carouselDashboardBanner .carousel-caption img {
+    position: absolute;
+    right: 20px;
+    bottom: 0px;
+    height: 130px;
+    z-index: -1;
+  }
+  /* #endregion Dashboard Banner */
+
+  /* #region Tabs */
+  .yp-learner-tabs {
+    background-color: transparent;
+    border: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    gap: 15px;
+  }
+  .yp-learner-tabs .nav-item .nav-link {  
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    vertical-align: middle;
+    text-transform: capitalize;
+    white-space: nowrap;
+
+    background-color: transparent;
+    color: #666666;
+    height: 36px;
+    padding: 4px 15px 4px 15px;
+    margin-bottom: 0px;
+    border: none;
+    border-radius: 20px;
+  }
+  .yp-learner-tabs .nav-item .nav-link.nav-link-with-count {
+      padding-right: 4px;
+  }
+  .yp-learner-tabs .nav-item .nav-link .nav-link-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      font-size: 12px;
+      font-weight: 500;
+      background-color: #EBE8EE;
+      border-radius: 100%;
+  }
+  .yp-learner-tabs + .tab-content>.tab-pane {
+    padding: 20px 0px 20px;
+  }
+
+  /**/
+  .yp-learner-tabs-with-btn-view-all.yp-learner-tabs {
+    max-width: calc(100% - 100px);
+  }
+    .yp-learner-tabs-with-btn-view-all + .tab-content {
+      position: relative;
+    }
+    .yp-learner-tabs-with-btn-view-all + .tab-content .yp-tab-content-btn-view-all {
+      position: absolute;
+      top: -34px;
+      right: 0px;
+    }
+  /* #endregion tabs */
+
+  /* #region Table */
+  .yp-table-learner-leaderboard .yp-leaderboard-trow-highlighted > td {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF6DB 80.29%, #FFEBB1 100%);
+  }
+  .yp-table-learner-leaderboard .yp-leaderboard-trow-highlighted > td:first-child {
+        box-shadow: inset 5px 0 0 0 #FFC212;
+  }
+  /* #endregion Table */
+
+  /* #region Pagination */
+  .yp-custom-pagination {
+    margin-top: 25px;
+    justify-content: center;
+  }
+  /* #endregion Pagination */
+
+  /* #region Assignment Boxes */
+  .yp-learner-assgn-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  }
+  .yp-learner-assgn-box .yp-learner-assgn-box-img-wrapper {
+    position: relative;
+    height: 230px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .yp-learner-assgn-box .yp-learner-assgn-box-img-wrapper img {
+    height: 210px;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transition: all 0.3s linear;
+  }
+  .yp-learner-assgn-box:hover .yp-learner-assgn-box-img-wrapper img {
+      transform: scale(1.1);
+  }
+  .yp-learner-assgn-box .yp-learner-assgn-box-content-wrapper {
+    position: relative;
+    /* z-index: 1; */
+    margin-top: -40px;
+    padding: 20px;
+
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .yp-learner-assgn-box-title {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .yp-learner-assgn-box-info-progress-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  /**/
+  .yp-learner-assgn-box-desc {
+      display: flex;
+      font-size: 12px;
+      font-weight: 400;
+      color: #707070;
+      margin-bottom: 7px;
+  }
+  .yp-learner-assgn-box-desc > span {
+      display: inline-block;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  .yp-learner-assgn-box-desc > .yp-link {
+      flex-shrink: 0;
+  }
+
+  .yp-learner-assgn-box-inside-info-wrapper {
+      flex-grow: 1;
+  }
+  .yp-learner-assgn-box-inside-progress-wrapper {
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .yp-learner-assgn-box-desc-overlay {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100% !important;
+      padding: 20px;
+      background-color: #FAFAFA;
+      border-radius: 20px;
+      overflow: hidden;
+
+      transform: translateY(100%);
+      transition: transform 0.3s ease-in;
+  }
+    .yp-learner-assgn-box-desc-overlay.show {
+        transform: translateY(0%);
+    }
+      .yp-learner-assgn-box-desc-overlay .yp-label-value-wrapper {        
+          height: 100%;
+          overflow: auto;
+      }
+  .yp-learner-assgn-box-desc-overlay .yp-learner-assgn-box-title {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: visible;
+  }
+  .yp-learner-assgn-box-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 20px;
+      row-gap: 5px;
+      margin-top: 15px;
+  }
+
+  /**/
+  .yp-circle-progress {
+    width: 60px;
+    text-align: center;
+  }
+
+  .yp-circle-progress-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 2px;
+    overflow: visible;
+  }
+
+  .yp-circle-progress-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 5;
+  }
+
+  .yp-circle-progress-progress {
+    fill: none;
+    stroke: #6AA56A; 
+    stroke-width: 5;
+    stroke-linecap: round;
+    transition: stroke-dasharray 5s ease;
+    transition-delay: 2s;
+  }
+
+  .yp-circle-progress-percentage {
+    fill: #303030;
+    font-size: 9px;
+    font-weight: 500;
+    text-anchor: middle;
+  }
+
+  .yp-circle-progress-status {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #303030;
+  }
+
+  /* Fav */
+  .yp-learner-assgn-box .yp-card-fav-btn-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    opacity: 0;
+    z-index: -2;
+    transition: all 0.3s ease-in;
+  }
+  .yp-learner-assgn-box:hover > .yp-learner-assgn-box-img-wrapper .yp-card-fav-btn-wrapper,
+  .yp-learner-assgn-box .yp-learner-assgn-box-img-wrapper .yp-card-fav-btn-wrapper.active {
+    display: inline-flex;
+    opacity: 1;
+    z-index: 0;
+  }
+  .yp-learner-assgn-box .yp-card-fav-btn-wrapper a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    text-decoration: none;
+    border-radius: 100%;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px 0px #00000040;
+  }
+  .yp-learner-assgn-box .yp-card-fav-btn-wrapper a i {
+    font-size: 20px;
+  }
+  /* #endregion Assignment Boxes */
+
+  /* #region Page Title Section */
+  .yp-learner-welcome-badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: auto;
+    font-size: 13px;
+    font-weight: 500;
+    background: linear-gradient(90deg, #F6F6F6 0%, #FFFFFF 100%);
+    padding: 9px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 8px 0px #00000026;
+  }
+  .yp-learner-welcome-badge i {
+    font-size: 16px;
+  }
+  /* #endregion Page Title Section */
+
+  /* #region Leaderboard Table */
+  .yp-custom-table > tbody > tr.yp-leaderboard-trow-highlighted > td {
+    color: #3D0973;
+    font-weight: 500;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF6DB 80.29%, #FFEBB1 100%);
+  }
+  .yp-table-learner-leaderboard .yp-custom-table > thead > tr > th:first-child,
+  .yp-table-learner-leaderboard .yp-custom-table > tbody > tr > td:first-child {
+    padding-left: 40px;
+    width: 140px;
+  }
+  /* #endregion Leaderboard Table */
+  /* #endregion LEARNER SPECIFIC PAGES */
+}
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+
+/* #region Media Queries */
+@media (max-width: 1200px) {
+  #yp-learner-pages {
+    /* #region Dashboard Stats & Leaderboard */
+    .yp-learner-dashboard-stat-box {  
+        gap: 20px;
+        padding: 32px 20px;
+    }
+    /* #endregion Dashboard Stats & Leaderboard */
+  }
+}
+@media (max-width: 1024px) {
+  #yp-learner-pages {
+    /* #region Dashboard Stats & Leaderboard */
+    .yp-sidebar-close .yp-learner-dashboard-leaderboard-wrapper {
+      min-width: 350px;
+    }
+    /* #endregion Dashboard Stats & Leaderboard */
+  }
+}
+@media (max-width: 992px) {
+  #yp-learner-pages {
+    /* #region Dashboard Stats & Leaderboard */
+    .yp-learner-dashboard-stat-boxes {
+        flex-direction: column;
+    }
+    .yp-learner-dashboard-stat-box {
+      padding-bottom: 10px;
+    }
+    .yp-learner-dashboard-stat-boxes-wrapper > div {
+      flex-grow: 1;
+    }
+    .yp-learner-dashboard-leaderboard-wrapper {
+      flex-basis: auto;
+    }
+
+    /* Leaderboard */
+    .yp-learner-dashboard-leaderboard-wrapper {
+      padding: 30px;
+    }
+    .yp-learner-dashboard-leaderboard-wrapper .yp-page-title-button-section {
+      margin-bottom: 15px;
+    }
+    .yp-leaderboard-search-box {
+      // width: 450px;
+      max-width: 100%;
+      align-self: center;
+      margin-bottom: 10px;
+    }
+    .yp-leaderboard-winners-box {
+      gap: 35px;
+    }
+    .yp-leaderboard-winners-box .yp-leaderboard-winner img {
+      max-width: 72px;
+    }
+    .yp-leaderboard-winners-box .yp-leaderboard-winner:nth-child(2) img {
+      width: 88px;
+      max-width: 88px;
+    }
+    /* #endregion Dashboard Stats & Leaderboard */
+  }
+}
+@media (max-width: 768px) {
+  #yp-learner-pages {
+    /* #region Dashboard Stats & Leaderboard */
+    .yp-learner-dashboard-stat-boxes-wrapper > div {
+      flex-basis: auto;
+    }
+    .yp-learner-dashboard-stat-box {  
+        gap: 20px;
+        padding: 20px 15px;
+    }
+    /* #endregion Dashboard Stats & Leaderboard */
+  }
+}
+
+@media (max-width: 767px) {
+  #yp-learner-pages {
+    /* #region Dashboard Stats & Leaderboard */
+    .yp-learner-dashboard-stat-boxes-wrapper {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .yp-learner-dashboard-stat-boxes-wrapper > div {
+      flex-basis: auto;
+    }
+    .yp-learner-dashboard-stat-box {  
+        flex-direction: row;
+        justify-content: start;      
+        gap: 10px;
+        padding: 20px 20px;
+    }
+    .yp-learner-dashboard-stat-box .yp-learner-dsb-info-wrapper {
+      flex-grow: 1;
+      text-align: center;
+    }
+    .yp-learner-dashboard-stat-box .yp-learner-dsb-info-count {
+      font-size: 45px;
+    }
+    .yp-learner-dashboard-stat-box .yp-learner-dsb-info-text {
+      font-size: 15px;
+    }
+
+    .yp-learner-dashboard-leaderboard-wrapper {
+        padding: 15px 15px 10px;
+    }
+    .yp-leaderboard-winners-box {
+      gap: 15px;
+    }
+    /* #endregion Dashboard Stats & Leaderboard */
+
+    /* #region Dashboard Banner */
+    #carouselDashboardBanner {
+        margin-bottom: 20px;
+    }
+    #carouselDashboardBanner .carousel-caption img {
+      display: none;
+    }
+    #carouselDashboardBanner .carousel-caption .carousel-caption-info {
+        max-width: 100%;
+    }
+    /* #endregion Dashboard Banner */
+
+    /* #region tabs */
+    .yp-learner-tabs-with-btn-view-all.yp-learner-tabs {
+      max-width: 100%;
+    }
+    .yp-learner-tabs-with-btn-view-all + .tab-content .yp-tab-content-btn-view-all {
+      position: relative;
+      top: 0px;
+      margin: 20px 0px 10px;
+      text-align: right;
+    }
+    /* #endregion tabs */
+
+    /* #region Page Title Section */
+    .yp-page-title-button-section {
+      flex-direction: column;
+      align-items: start;
+    }
+    .yp-page-title-button-section .yp-page-button,
+    .yp-page-title-button-section .yp-page-button .yp-width-335-px {
+      width: 100%;
+    }
+    /* #endregion Page Title Section */
+  }
+}
+
+@media (max-width: 575px) {
+  #yp-learner-pages {
+    /* #region Dashboard Stats & Leaderboard */
+    /* Leaderboard */
+    .yp-leaderboard-winners-box .yp-leaderboard-winner img {
+      max-width: 60px;
+    }
+    .yp-leaderboard-winners-box .yp-leaderboard-winner:nth-child(2) img {
+      width: 72px;
+      max-width: 72px;
+    }
+    /* #endregion Dashboard Stats & Leaderboard */
+
+    /* #region Pagination */
+    .yp-custom-pagination.sticky {
+      position: sticky;
+      bottom: -20px;
+      padding: 15px 20px;
+      margin: 0px;    
+    }
+    .yp-custom-pagination.sticky .pagination {
+        gap: 10px;
+    }
+    .yp-custom-pagination .pagination li.page-item a {
+      font-size: 20px;
+    }
+    /* #endregion Pagination */
+  }
+}
+/* #endregion Media Queries */

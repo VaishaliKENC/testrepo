@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="">
+<!--<![endif]-->
+<head>
+
+<!-- Player and page level .js files to include -->
+<script language="javascript" type="text/javascript">
+	$(document).ready(function () {
+	 $("#popupClose").click(function(){  
+			disablePopup();  
+	   }); 		
+	
+	 $("#exit_yesBtn").click(function(){ 
+			BVScorm_adlOnunload();
+			top.close();
+	   }); 		
+	 $("#exit_NoBtn").click(function(){  
+			disableExitPopup();  
+	   }); 		
+	 });
+</script>
+
+</head>
+<body >
+<div id="exit_popUpContaier">
+	<div id="exit_popUp">
+		<div id="exit_image"></div>
+		<div id="exit_text">Are you sure you want to exit?</div>
+		<div id="exit_yesBtn">Yes</div>
+		<div id="exit_NoBtn">No</div>
+	</div>
+</div>
+</body>
+</html>

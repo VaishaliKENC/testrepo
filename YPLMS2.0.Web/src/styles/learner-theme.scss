@@ -1,0 +1,84 @@
+#yp-learner-pages {
+    --color-primary-learner: #8F6CB3; //#8F6CB3; //admin-primary: #3D0973
+    --color-page-title-learner: #333333;
+    --color-3D0973-learner: #3D0973;
+    --color-BE97E5-learner: #BE97E5;
+    --color-F2EAFA-learner: #F2EAFA;
+    --color-bca7d1-learner: #bca7d1;
+    --color-d5d0db-learner: #d5d0db;
+
+    /*Override common theme*/
+    --color-primary-button: #8F6CB3;  
+}
+
+#yp-learner-pages {
+// wrap all the style under body having id #yp-page-container
+// so that we can apply css without conflicting with admin side pages
+
+/* #region Navbar Container */
+.yp-navbar-menu-notification a i {
+  color: var(--color-primary-learner);
+}
+/* #endregion Navbar Container */
+
+/* #region Sidebar */
+.yp-sidebar-item .yp-sidebar-link.active {
+  background-color: var(--color-primary-learner);
+}
+/* #endregion Sidebar */
+
+/* #region Page Title Section */
+.yp-page-title {
+  color: var(--color-page-title-learner);
+}
+.breadcrumb-item, 
+.breadcrumb-item a {
+  color: var(--color-primary-learner);
+}
+.breadcrumb-item.active {
+  color: var(--color-page-title-learner);
+}
+
+.yp-learner-welcome-badge {
+  color: var(--color-primary-learner);
+}
+/* #endregion Page Title Section */
+
+/* #region Dashboard Banner */
+.yp-carousel .carousel-caption h5 {
+  color: var(--color-primary-learner);
+}
+.yp-carousel .carousel-control-prev,
+.yp-carousel .carousel-control-next {
+  background-color: var(--color-primary-learner);
+}
+.yp-carousel .carousel-indicators .active {
+  background-color: var(--color-primary-learner);
+}
+#carouselDashboardBanner .carousel-caption {
+  background: var(--color-F2EAFA-learner);
+}
+/* #endregion Dashboard Banner */
+
+/* #region Tabs */
+.yp-learner-tabs .nav-item .nav-link.active {
+  background-color: var(--color-primary-learner);
+  color: #ffffff;
+}
+.yp-learner-tabs .nav-item .nav-link.active .nav-link-count { 
+    background-color: var(--color-BE97E5-learner);
+}
+/* #endregion Tabs */
+
+/* #region Assignment Boxes */
+.yp-learner-assgn-box-title {
+    color: var(--color-3D0973-learner);
+}
+/* #endregion Assignment Boxes */
+
+/* #region Pagination */
+.yp-custom-pagination.sticky {
+  background-color: var(--color-d5d0db-learner);
+}
+/* #endregion Pagination */
+}

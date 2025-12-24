@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework> 
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>YPLMS2._0</RootNamespace>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Compile Include="C:\Users\chetan.dabire\Desktop\Program.cs" Link="Program.cs" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="AjaxControlToolkit" Version="20.1.0" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.18" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
+  </ItemGroup>
+<!--test-->
+  <ItemGroup>
+    <ProjectReference Include="..\YPLMS2.0.API.DataAccessManager\YPLMS2.0.API.DataAccessManager.csproj" />
+    <ProjectReference Include="..\YPLMS2.0.API.Entity\YPLMS2.0.API.Entity.csproj" />
+  </ItemGroup>
+
+</Project>

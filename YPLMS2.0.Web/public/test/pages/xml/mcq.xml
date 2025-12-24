@@ -1,0 +1,43 @@
+<Contents id="M0L0T0P0">
+  <Content></Content>
+  <Choices>
+    <Choice id="Choice1" Value="True">
+      <![CDATA[Correct Option]]>
+    </Choice>
+    <Choice id="Choice2" Value="False">
+      <![CDATA[Option 02]]>
+    </Choice>
+    <Choice id="Choice3" Value="False">
+      <![CDATA[Option 03]]>
+    </Choice>
+    <Choice id="Choice4" Value="False">
+      <![CDATA[Option 04]]>
+    </Choice>
+    <Choice id="Choice5" Value="False">
+      <![CDATA[Option 05]]>
+    </Choice>
+    <Choice id="Choice6" Value="False">
+      <![CDATA[Option 06]]>
+    </Choice>
+  </Choices>
+  <Question>
+    <GlobalValues Attempts="2"/>
+    <QuestionText>
+      <![CDATA[<p>Question 01</p>]]>
+    </QuestionText>
+  </Question>
+  <Feedbacks>
+    <FirstIncorrect>
+      <![CDATA[That's not correct. Click Retry to attempt the question again.]]>
+    </FirstIncorrect>
+    <SecondIncorrect>
+      <![CDATA[That's still not correct. Click Solution to view the correct answers.]]>
+    </SecondIncorrect>
+    <Correct>
+      <![CDATA[That's correct.]]>
+    </Correct>
+    <Solution>
+      <![CDATA[Soluton content comes here...]]>
+    </Solution>
+  </Feedbacks>
+</Contents>

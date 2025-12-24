@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html>
+	<!--<![endif]-->
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Encora Innovation Labs</title>
+		<link href="css/boilerplate.css" rel="stylesheet" type="text/css">
+		<link href="css/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css">
+		<link href="css/layoutStyle_V2.css" rel="stylesheet" type="text/css">
+		<link href="css/globalStyle.css" rel="stylesheet" type="text/css">
+		<link href="css/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css">
+		<link href="css/menu.css" rel="stylesheet" type="text/css">
+		<link href="css/exit.css" rel="stylesheet" type="text/css">
+		<link href="css/page.css" rel="stylesheet" type="text/css">
+		<!--
+		To learn more about the conditional comments around the html tags at the top of the file:
+		paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
+		Do the following if you're using your customized build of modernizr (http://www.modernizr.com/):
+		* insert the link to your js here
+		* remove the link below to the html5shiv
+		* add the "no-js" class to the html tags at the top
+		* you can also remove the link to respond.min.js if you included the MQ Polyfill in your modernizr build
+		-->
+		<!--[if lt IE 9]>
+		<script src="jsfiles/html5shiv-printshiv.js"></script>
+		<![endif]-->
+
+		<script src="jsfiles/respond.min.js"></script>
+		<script src="jsfiles/jquery-1.8.1.min.js"></script>
+		<script src="jsfiles/loadXML.js"></script>
+		<script src="jsfiles/main.js"></script>
+		<script src="jsfiles/navigation.js"></script>
+		<script src="jsfiles/jquery.jplayer.min.js"></script>
+		<script src="jsfiles/menu.js"></script>
+		<script src="jsfiles/preloadjs.min.js"></script>
+		<script src="jsfiles/jquery.ui.effect.js"></script>
+		<script src="jsfiles/jquery.ui.effect-slide.js"></script>
+		<script src="jsfiles/jquery.ui.core.js"></script>
+		<script src="jsfiles/jquery.ui.widget.js"></script>
+		<script src="jsfiles/jquery.ui.progressbar.js"></script>
+		<script src="jsfiles/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="jsfiles/jquery.touchwipe.js"></script>
+		<script src="scormjs/BVScorm.js"></script>
+
+		<!-- Player and page level .js files to include -->
+		<!--<script src="Intro/runtime.js"></script>-->
+
+		<script language="javascript" type="text/javascript">
+			var oXML;
+			var manifest = new Array();
+			var loader;
+			//var	transcriptText;
+			$(document).ready(function() {
+				loader = new createjs.PreloadJS(false);
+				//transcriptText = $('#transcriptbar');
+	  			$('.gridContainer').css("visibility","hidden");
+				if (IsScrom) {
+					BVScorm_adlOnload();
+				}
+				var screen_ht = $(window).height();
+				var screen_wd = $(window).width();
+
+				var preloader_ht = 32;
+				var preloader_wd = 32;
+				var padding_top = (screen_ht / 2) - preloader_ht;
+				var padding_left = (screen_wd / 2) - preloader_wd;
+				fnhideTranscript();
+				//fnperCacheSound(soundName);
+				$.ajax({
+					type : "GET",
+					url : 'mastercontent.xml',
+					dataType : ($.browser.msie) ? "text" : "xml",
+					success : function(data) {
+						xmlParser(data)
+					}
+				});
+
+
+				loader.onComplete = handleComplete;
+				var fontsize = 14;
+				$("body").css("font-size", 13);
+				////Code to maintain ratio
+				resizeFrame();
+				jQuery.event.add(window, "load", resizeFrame);
+				jQuery.event.add(window, "resize", resizeFrame);
+
+				////End ratio.
+			});
+			function xmlParser(data) {
+				var xml;
+				if ( typeof data == "string") {
+					xml = new ActiveXObject("Microsoft.XMLDOM");
+					xml.async = false;
+					xml.loadXML(data);
+				} else {
+					xml = data;
+				}
+				oXML = $(xml);
+				readyflg = 4;
+				fnXMLLoaded();
+			}
+
+			function fnXMLLoaded() {
+				fnCreateXMLObjArr();
+				fnCreatePreCacheArr();
+				fnAddPlayerEvents();
+				gCurrPageNum = 1;
+				perCacheImagesAudio();
+		//------------------------------------------------------
+		//Resolve for after bookmarking the page is not get load
+		//Commented below line of code & added it in below handleComplete()
+		//fnCheckForBookMark();
+		//------------------------------------------------------
+				//$(".clsPreloader").hide();
+			}
+
+			function perCacheImagesAudio() {
+				//alert(manifest.length)
+				if (manifest.length > 0) {
+					loader.loadManifest(manifest);
+				} else {
+					//fnLoadPage(gCurrMod, gCurrLess, gCurrTop, gCurrPage);
+				}
+			}
+
+	function handleComplete() {
+		fnCheckForBookMark();
+		//------------------------------------------------------
+		//lesson_location = "m1"
+		if(lesson_location!=undefined){
+			if(lesson_location==""){
+					//$(".courseIntro").load('Intro/Intro_swiffy.html');
+					//$(".courseIntro").load('Intro/Intro.html');
+					//fnHidePreloader();
+					fnHideIntro();
+			}else{
+				$(".courseIntro").hide();
+				$(".courseIntro").remove();
+				$('.gridContainer').css("visibility","visible");
+				if( lesson_location != undefined && lesson_location != "" ) {
+					fnJumpToPageByID(lesson_location);
+				} else {
+					fnLoadPage(gCurrMod, gCurrLess, gCurrTop, gCurrPage);
+				}
+
+			}
+			$("body").css("background-color","#333333");
+		}else{
+			$("body").css("background-color","#333333");
+			//$(".courseIntro").load('Intro/Intro_swiffy.html');
+			//$(".courseIntro").load('Intro/Intro.html');
+			fnHideIntro();
+		}
+	}
+//*---------------------------------
+// Added for Skip The Intro
+	function fShowCourse(){
+			$("body").css("background-color","#333333");
+			$(".courseIntro").hide();
+			$(".courseIntro").remove();
+			$('.gridContainer').css("visibility","visible");
+				fnLoadPage(gCurrMod, gCurrLess, gCurrTop, gCurrPage);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="player-container">
+		<div class="clsPreloader">
+			<img src="media/images/preloader.gif" class="clsPreloaderImg"/>
+		</div>
+		<div class="courseIntro" style="width:100%; height:100%;position: absolute;">
+		<!--<a href="javascript:fShowCourse();">NEXT</a>-->
+		</div>
+		<div class="gridContainer clearfix">
+			<header name="topFrame" id="topFrame">
+				<div id="headerbuttons">
+					<div id="clsExitBtn" title="Exit"></div>
+					<!-- <div class="spacer">|</div>
+					<div id="clsHelpBtn" title="Help">HELP</div>
+					<div class="spacer">|</div>
+					<div id="clsMnuBtn" title="Content">CONTENT</div> -->
+				</div>
+				<div id="logoContainer">
+					<div id="courseTitle">Encora Innovation Labs</div>
+					<div id="logo"><!--<img src="media/images/logo.jpg" />--></div>
+					<div id="pgTitleFrame"></div>
+				</div>
+			</header>
+			<div id="contentContainer">
+				<div id="contentFrame"></div>
+			</div>
+			<footer name="btmFrame" id="btmFrame">
+				<div id="footerbuttons">
+				<!--
+				<a data="" class="progressToolTip"><div id="progressbar"></div></a>
+				<div id="clsAudioOffBtn" title="Audio Off"></div>
+				<div id="clsAudioOnBtn" title="Audio On"></div>
+				-->
+				<div id="clsMnuBtn" title="Table of content"></div>
+				<!--
+				<div class="clsMnuHelpGap">&nbsp;</div>
+				<div id="clsHelpBtn" title="Help"></div> 
+				-->
+				<div id="clsNxtBtn" class="clsDisNxtBtn" title="Next"></div>
+				<div id="clsPageNumber"></div>
+				<div class="clsBackNextGap">&nbsp;</div>
+				<div id="clsBackBtn" class="clsDisBackBtn" title="Back"></div>
+				
+				<!--
+				<div id="clsReplay" title="Replay"></div>
+				<div id="clsPlayPauseBtn" class="clsPlay" title="Play / Pause"></div>
+				-->
+				<!-- <div id="transcriptBtn" class="clsTransOnBtn" title="Transcript"></div> -->
+				<!-- <div id="transcriptbar">Display Transcript Text</div> -->
+				</div>
+				<div class="nextInst">Click Next to Continue<b class="notch"></b></div>
+				<div id="audioDiv">
+					<audio id="audioplayer" autoplay style="audioPlayer" onplay="onAudioStart()" ontimeupdate="onAudioTimeUpdate()">
+					</audio>
+					<!--<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="flashAudio" class="flashFallback">
+					  <param name="allowFullScreen" value="false" />
+					  <param name="movie" value="jsfiles/flashAudio.swf" />
+					  <param name="quality" value="high" />
+					  <param name="bgcolor" value="#ffffff" />
+					  <embed src="jsfiles/flashAudio.swf" quality="high" bgcolor="#ffffff" name="flashAudio" align="middle" allowFullScreen="false"/>
+					</object>-->
+				</div>
+			</footer>
+		</div>
+		</div>
+		</div>
+	</body>
+</html>

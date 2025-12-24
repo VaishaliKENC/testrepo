@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>YPLMS2._0.API.EmailService</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="5.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YPLMS2.0.API.DataAccessManager\YPLMS2.0.API.DataAccessManager.csproj" />
+    <ProjectReference Include="..\YPLMS2.0.API.Entity\YPLMS2.0.API.Entity.csproj" />
+    <ProjectReference Include="..\YPLMS2.0.API.YPLMS.Services\YPLMS2.0.API.YPLMS.Services.csproj" />
+  </ItemGroup>
+
+</Project>

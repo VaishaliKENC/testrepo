@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Multiple Choice Question</title>
+<script src="jsfiles/xmltoobj.js"></script>
+<style type="text/css">
+	#question{
+		padding-left: 2.5%;
+		display: none;
+		color: #FFF;
+	}
+	#options{
+		padding-left: 1.5%;
+		display: none;
+		width: 100%;
+		color: #FFF;
+	}
+	#buttons{
+		padding-left: 2.5%;
+		display: none;
+		width: 150px;
+	}
+	#rdOptions{
+		float: left;
+		width: 35%;
+	}
+	#imgOption{
+		float: right;
+		width: 65%;
+    	text-align: center;
+	}
+	#optionsTblLft{
+		padding-top: 3px;
+	}
+	#sbmtBtn{
+		float: left;
+		height: 25px;
+		width: 72px;
+		background-image: url("pages/images/submitDisable.jpg") no-repeat;
+	}
+	#rtySolutionBtn{
+		visibility: hidden;
+		float: right;
+		height: 25px;
+		width: 72px;
+		background-image: url("pages/images/submitDisable.jpg") no-repeat;
+	}
+	.textSelection{
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	.hiddn{
+		visibility: hidden;
+		width: 0px;
+	}
+	.vsble{
+		visibility: visible;
+		width: 100%;
+	}
+	.tickWrongImgTd{
+		width: 14px;
+	}
+	.tickWrongImg{
+		position: absolute;
+		width: 17px;
+		height: 17px;
+		visibility: hidden;
+	}
+	#feedHldr{
+		position: absolute;
+		width: 300px;
+		height: 200px;
+		right: 10%;
+		background-color: #CCC;
+		display: none;
+		z-index: 10;
+	}
+	#feedTxtHldr{
+		color: #FFF;
+		padding-top: 10px;
+		padding-left: 10px;
+		height: 150px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	#feedTitleTxtHldr{
+		background-color: #000;
+		color: #FFF;
+		height: 20px;
+		padding-top: 10px;
+		padding-left: 10px;
+		font-weight: bold;
+	}
+</style>
+</head>
+<body>
+	<div class="pg-pageContent">
+	    <div id="question" class="textSelection">
+	    </div>
+	    <div id="feedHldr">
+	    	<div id="feedTitleTxtHldr" class="textSelection">
+	    	</div>
+	    	<div id="feedTxtHldr" class="textSelection">
+	    	</div>
+	    </div>
+	    <div id="options" class="textSelection">
+	    	<div id="rdOptions" class="textSelection">
+	    	</div>
+	    	<div id="imgOption">
+	    	</div>
+	    </div>
+	    <div id="buttons">
+	    	<div id="sbmtBtn">
+	    	</div>
+	    	<div id="rtySolutionBtn">
+	    	</div>
+	    </div>
+
+    </div>
+    <script>
+    	var oPageXML;
+    	var optionCnt = 0;
+    	var xPadd = "2px";
+    	var yPadd = "10px";
+    	var optionArr = new Array();
+    	var corrArr = new Array();
+    	var currOptionArr = new Array();
+    	var currSelectedOpt;
+    	var isSubmitEnable = false;
+    	var maxAttempts = 1;
+    	var currAttempts = 1;
+    	var imgPath = "";
+    	var isDrag = false;
+    	var dragObjRef;
+    	var calculateOnce = false;
+    	var xDiff = 0;
+    	var yDiff = 0;
+    	var draggableWidth = 1000;
+    	var draggableHeight = 600;
+    	var xVal = 10;
+		var sX = 0;
+		var yVal = 10;
+		var sY = 0;
+		var eX = 0;
+		var eY = 0;
+		var animateContent = true;
+		var showAnswer = false;
+		var isMCQ = true;
+
+    	var succRefFunc = function fnInitPage(oXML){
+    		oPageXML = oXML;
+    		fnInitMCQ();
+    		fnHidePreloader();
+    	}
+    	var errRefFunc = function fnXMLLoadError(){
+    		alert("Error loading XML file.");
+    	}
+
+		function fnCheckFeedPositionX(newX){
+			if( newX <= sX ) { newX = sX; }
+			if( newX >= eX ) { newX = eX; }
+			return (newX);
+		}
+		function fnCheckFeedPositionY(newY){
+			if( newY <= sY ) { newY = sY; }
+			if( newY >= eY ) { newY = eY; }
+			return (newY);
+		}
+		function fnStartDragEnable(dragObj){
+			dragObjRef = "#feedHldr";
+			isDrag = true;
+			if( eX == 0 ){
+				sX = $("#question").position().left;
+				sY = $("#question").position().top;
+				eX = draggableWidth - $(dragObjRef).width() - xVal;
+				eY = draggableHeight - $(dragObjRef).height() - yVal;
+			}
+		}
+		function fnStartDrag(event){
+			event.preventDefault();
+			if( isDrag ){
+				if( !calculateOnce ){
+					xDiff = event.pageX - $(dragObjRef).position().left;
+					yDiff = event.pageY - $(dragObjRef).position().top;
+					calculateOnce = true;
+				}
+				try {
+					$(dragObjRef).css("left",fnCheckFeedPositionX(event.pageX-xDiff));
+					$(dragObjRef).css("top",fnCheckFeedPositionY(event.pageY-yDiff));
+				} catch(e){
+					alert("" + e.description);
+				}
+			}
+		}
+		function fnStopDrag(event){
+			event.preventDefault();
+			isDrag = false;
+			calculateOnce = false;
+		}
+		function fnInitMCQ(){
+			var corrOptionCnt = 0;
+			var totalCorrOptionCnt =0;
+			fnDisableSubmit();
+			fnDisableRetry();
+			maxAttempts = parseInt(oPageXML.find("GlobalValues").attr("Attempts"));
+			imgPath = oPageXML.find("Image").attr("ImagePath");
+			oPageXML.find("Choice").each(function() {
+				if($(this).attr("Value").toLowerCase()=="true"){
+					totalCorrOptionCnt++;
+				}
+			});
+			if(totalCorrOptionCnt>1)isMCQ=false;
+			var optionTable = '<table id="optionsTbl">';
+			oPageXML.find("Choice").each(function() {
+				var optionObj = new Object();
+				optionObj.txt = $(this).text();
+				optionObj.value = $(this).attr("Value").toLowerCase();
+				optionArr[optionCnt] = optionObj;
+
+				var currOptionObj = new Object();
+				currOptionObj.value = "false";
+				currOptionObj.selected = "false";
+				currOptionArr[optionCnt] = currOptionObj;
+
+
+				corrArr[optionCnt] = false;
+				optionTable += '<tr><td class="tickWrongImgTd">';
+				optionTable += '<img class="tickWrongImg" src="" id="tick'+optionCnt+'" alt="false" />';
+				optionTable += '<img class="tickWrongImg" src="" id="wrong'+optionCnt+'" alt="true" />';
+				optionTable += '</td>';
+				optionTable += '<td id="optionsTblLft">';
+				if($(this).attr("Value").toLowerCase() == "true"){
+					corrArr[corrOptionCnt] = optionCnt;
+					corrOptionCnt++;
+				}
+				if(isMCQ){
+					optionTable += '<input onClick="fnOptionSelected(this)" id="'+optionCnt+'" type="radio" name="mcqAnsOpt" value="0" ></input>';
+				}else{
+					optionTable += '<input onClick="fnOptionSelected(this)" id="'+optionCnt+'" type="checkbox" name="mcqAnsOpt" value="0" ></input>';
+				}
+                optionTable += '</td><td width="' + xPadd + '"></td><td id="optionsTblRgt">' + optionArr[optionCnt].txt + '</td></tr>';
+                optionTable += '<tr height="' + yPadd + '"><td></td></tr>';
+				optionCnt = optionCnt + 1;
+			});
+			optionTable += '</table>';
+			$("#question").html(oPageXML.find("QuestionText").text());
+            $("#rdOptions").html(optionTable);
+            if( imgPath != "" && imgPath != undefined ){
+            	$("#imgOption").html('<img src="'+imgPath+'"/>');
+            } else {
+            	$("#rdOptions").css("width", "99%");
+            }
+           	fnAnimateContent( animateContent );
+		}
+		function fnShowCorrectAnswer(){
+			fnDisableSolution()
+			for( var i = 0; i < corrArr.length; i++ ){
+				$("#tick"+corrArr[i]).css("visibility","visible");
+			}
+			fnSetPageComp();
+		}
+		function fnDisableOptions(){
+			if(isMCQ){
+				$("input[type=radio]").attr("disabled",true);
+			}else{
+				$("input[type=checkbox]").attr("disabled",true);
+			}
+		}
+		function fnEnableOptions(){
+			fnResetOptions();
+			if(isMCQ){
+				$("input[type=radio]").attr("checked",false);
+				$("input[type=radio]").attr("disabled",false);
+			}else{
+				$("input[type=checkbox]").attr("checked",false);
+				$("input[type=checkbox]").attr("disabled",false);
+			}
+			fnHide($("#feedHldr"));
+			fnDisableRetry();
+		}
+
+		function fnResetOptions(){
+			for(var i=0;i<currOptionArr.length;i++){
+				currOptionArr[i].value ="false";
+				currOptionArr[i].selected = "false";
+			}
+		}
+		function fnDisableSubmit(){
+			isSubmitEnable = false;
+			$("#sbmtBtn").css("cursor","default");
+			$("#sbmtBtn").css("background","url('pages/images/submitDisable.jpg') no-repeat");
+			$("#sbmtBtn").unbind("click");
+		}
+		function fnEnableSubmit(){
+			isSubmitEnable = true;
+			$("#sbmtBtn").css("cursor","pointer");
+			$("#sbmtBtn").css("background","url('pages/images/submitEnable.jpg') no-repeat");
+			$("#sbmtBtn").click(function(e) {
+				fnSendDataLMS();
+				//fnCheckAnswer();
+			});
+		}
+		function fnDisableRetry(){
+			$("#rtySolutionBtn").css("cursor","default");
+			$("#rtySolutionBtn").css("background","url('pages/images/retryEnable.jpg') no-repeat");
+			$("#rtySolutionBtn").unbind("click");
+		}
+		function fnEnableRetry(){
+			$("#rtySolutionBtn").css("cursor","pointer");
+			$("#rtySolutionBtn").css("background","url('pages/images/retryEnable.jpg') no-repeat");
+			$("#rtySolutionBtn").click(function(e) {
+				fnEnableOptions();
+			});
+		}
+		function fnEnableSolution(){
+			$("#rtySolutionBtn").css("cursor","pointer");
+			$("#rtySolutionBtn").css("background","url('pages/images/solutionEnable.jpg') no-repeat");
+			$("#rtySolutionBtn").click(function(e) {
+				fnShowCorrectAnswer();
+			});
+		}
+		function fnDisableSolution(){
+			$("#rtySolutionBtn").css("cursor","default");
+			$("#rtySolutionBtn").css("background","url('pages/images/solutionEnable.jpg') no-repeat");
+			$("#rtySolutionBtn").unbind("click");
+		}
+		function fnOptionSelected(optRef){
+			if(isMCQ){
+				for(var i=0;i<currOptionArr.length;i++){
+					if(i==optRef.id){
+						currOptionArr[i].value = "true";
+						currOptionArr[i].selected = "true"
+					}else{
+						currOptionArr[i].value = "false";
+						currOptionArr[i].selected = "false"
+					}
+				}
+			}else{
+				if(optRef.checked){
+					currOptionArr[optRef.id].value = "true";
+					currOptionArr[optRef.id].selected = "true"
+				}else{
+					currOptionArr[optRef.id].value = "false";
+					currOptionArr[optRef.id].selected = "false"
+				}
+			}
+			var isAnyOptionSelected = false;
+			for(var i=0;i<currOptionArr.length;i++){
+				if(currOptionArr[i].selected =="true" ){
+					isAnyOptionSelected = true;
+				}
+			}
+			if( isAnyOptionSelected ){
+				if( !isSubmitEnable ) fnEnableSubmit();
+			} else{
+				fnDisableSubmit();
+			}
+		}
+		function fnCheckAnswer(){
+			var isAnsCorr = true;
+			for(var i=0;i<currOptionArr.length;i++){
+				if(currOptionArr[i].value != optionArr[i].value){
+					isAnsCorr = false;
+				}
+			}
+			var feedStr = "";
+			if( isAnsCorr ){
+				for(var i=0;i<currOptionArr.length;i++){
+					if(currOptionArr[i].selected =="true" ){
+						$("#tick"+i).css("visibility","visible");
+					}
+				}
+				fnDisableSubmit();
+				fnDisableOptions();
+				feedStr = oPageXML.find("Correct").text();
+				$("#feedTitleTxtHldr").html("Correct");
+				fnSetPageComp();
+			} else {
+				if( currAttempts >= maxAttempts ){
+					fnDisableSubmit();
+					fnDisableOptions();
+					for(var i=0;i<currOptionArr.length;i++){
+						if(currOptionArr[i].selected =="true" ){
+							if(optionArr[i].value=="true"){
+								$("#tick"+i).css("visibility","visible");
+							}else{
+								$("#wrong"+i).css("visibility","visible");
+							}
+						}
+					}
+					feedStr = oPageXML.find("Solution").text();
+					$("#feedTitleTxtHldr").html("Incorrect");
+					showAnswer = true;
+					fnEnableSolution();
+				} else {
+					if( currAttempts == 1 ) feedStr = oPageXML.find("FirstIncorrect").text();
+					if( currAttempts == 2 ) feedStr = oPageXML.find("SecondIncorrect").text();
+					currAttempts++;
+					fnDisableSubmit();
+					fnDisableOptions();
+					fnEnableRetry();
+					$("#feedTitleTxtHldr").html("Retry");
+				}
+			}
+			$("#feedTxtHldr").html(feedStr);
+			fnShow($("#feedHldr"));
+		}
+		function fnAnimateContent(){
+			if( animateContent ){
+				fnShow($("#question"));
+				fnShow($("#options"));
+				fnShow($("#buttons"));
+			} else {
+				$("#question").css("display", "block");
+				$("#options").css("display", "block");
+				$("#buttons").css("display", "block");
+			}
+		}
+		function fnShow( elemObj, effStr ){
+			if( effStr == undefined ) effStr = "fade";
+			effVal = effStr.toUpperCase();
+			switch(effVal){
+				case "FADE":
+					elemObj.fadeIn(400);
+					break;
+				case "SLIDE":
+					elemObj.slideDown(400);
+					break;
+			}
+
+		}
+		function fnHide( elemObj, effStr ){
+			if( effStr == undefined ) effStr = "fade";
+			effVal = effStr.toUpperCase();
+			switch(effVal){
+				case "FADE":
+					elemObj.fadeOut(400);
+					break;
+				case "SLIDE":
+					elemObj.slideUp(400);
+					break;
+			}
+		}
+		function fnSendDataLMS(){
+			var isAnsCorr = true;
+			for(var i=0;i<currOptionArr.length;i++){
+				if(currOptionArr[i].value != optionArr[i].value){
+					isAnsCorr = false;
+				}
+			}
+			if( isAnsCorr ) {
+				fnUpdateAssessmentScore(1);
+			} else {
+				fnUpdateAssessmentScore(0);
+			}
+		}
+
+		var audioPath = "";
+		var currCue = 0;
+		var updateContentArray = [{ }];
+
+		$(document).ready(function(){
+			fnLoadXMLFile("pages/xml/mrq.xml",succRefFunc,errRefFunc);
+		});
+    </script>
+</body>
+</html>

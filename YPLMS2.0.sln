@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YPLMS2.0", "YPLMS2.0\YPLMS2.0.csproj", "{7B0153E8-AEBE-4EEC-8921-AB0B5706F77C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YPLMS2.0.API.DataAccessManager", "YPLMS2.0.API.DataAccessManager\YPLMS2.0.API.DataAccessManager.csproj", "{951393BC-C3FD-426A-B8F6-4E394F78BB0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YPLMS2.0.API.Entity", "YPLMS2.0.API.Entity\YPLMS2.0.API.Entity.csproj", "{C1DCC2F4-CA1C-42E6-BCCF-88F96821658B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YPLMS2.0.API.YPLMS.Services", "YPLMS2.0.API.YPLMS.Services\YPLMS2.0.API.YPLMS.Services.csproj", "{A7EC09B3-F92C-41D3-BB84-F5BE86A8B1E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YPLMS2.0.API.EmailService", "YPLMS2.0.API.EmailService\YPLMS2.0.API.EmailService.csproj", "{32EA1F6A-CC5A-4772-9B45-0CAADF28DFE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B0153E8-AEBE-4EEC-8921-AB0B5706F77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0153E8-AEBE-4EEC-8921-AB0B5706F77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0153E8-AEBE-4EEC-8921-AB0B5706F77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0153E8-AEBE-4EEC-8921-AB0B5706F77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{951393BC-C3FD-426A-B8F6-4E394F78BB0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{951393BC-C3FD-426A-B8F6-4E394F78BB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{951393BC-C3FD-426A-B8F6-4E394F78BB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{951393BC-C3FD-426A-B8F6-4E394F78BB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DCC2F4-CA1C-42E6-BCCF-88F96821658B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1DCC2F4-CA1C-42E6-BCCF-88F96821658B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1DCC2F4-CA1C-42E6-BCCF-88F96821658B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1DCC2F4-CA1C-42E6-BCCF-88F96821658B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7EC09B3-F92C-41D3-BB84-F5BE86A8B1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7EC09B3-F92C-41D3-BB84-F5BE86A8B1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7EC09B3-F92C-41D3-BB84-F5BE86A8B1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7EC09B3-F92C-41D3-BB84-F5BE86A8B1E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32EA1F6A-CC5A-4772-9B45-0CAADF28DFE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32EA1F6A-CC5A-4772-9B45-0CAADF28DFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32EA1F6A-CC5A-4772-9B45-0CAADF28DFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32EA1F6A-CC5A-4772-9B45-0CAADF28DFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53E3B3D4-D4B0-4EB0-B4E4-433CFC01450C}
+	EndGlobalSection
+EndGlobal

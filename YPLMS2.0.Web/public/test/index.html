@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Encora - Custom HTML5 Player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+var nwin=null
+var bclr="#CCCCCC"
+var TheNewWin = null;
+var now = new Date();
+window.IsChildUnloaded = false;
+function newWindow() {
+	var NewWinHeight=screen.width;
+	var NewWinWidth=screen.height;
+	var NewWinPutX=0;
+	var NewWinPutY=0;
+	TheNewWin =window.open('main.html','TheNewpop'+now.getTime(),'fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=hidden,resizable=no,scroll=no,height=652,width=1014,top=0,left=0');
+}
+function fWinOnUnload()
+{
+	if(TheNewWin!=null)
+	{
+		TheNewWin.close();
+	}
+}
+</script>
+<style type="text/css">
+<!--
+.main { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #44197e ; text-decoration: none; text-align: center; background-color: #f00000; border-color: #FFFFFF #000000 #000000 #FFFFFF; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+
+.main_mo { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #FFFFFF; text-decoration: none; text-align: center; background-color: #44197e; border-color: #FFFFFF #000000 #000000 #FFFFFF; cursor: hand; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+
+.clsLeftText {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18px; font-style: normal; line-height: normal; font-weight: bold; color: #666666; text-align: center; padding-right: 8px; vertical-align: center}
+
+.clsFootnote {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-style: normal; line-height: normal; font-weight: normal; color: #666666; text-align: center; vertical-align: center; padding-bottom: 3px}
+
+.clsGet_flash { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-style: normal; line-height: 24px; font-weight: normal; color: #FFFFFF; background-color: #44197e; padding-bottom: 3px; text-align: center}
+
+.clsGet_flash_Link { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-style: normal; line-height: normal; font-weight: normal; color: #FFE0CC; background-color: #44197e; padding-bottom: 5px; text-align: center ; text-decoration: underline}
+
+.clsGet_flash_Link:hover{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-style: normal; line-height: 24px; font-weight: normal; color: #FFD2A6; background-color: #44197e; padding-bottom: 5px; text-align: center ; text-decoration: underline}
+
+.clsLeftText_small { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; line-height: 24px; font-weight: normal; color: #FFFFFF; background-color: #44197e; padding-left: 10px }
+
+.clsLine {  background-color: #44197e; height: 1px}
+
+a:link {color:#FFFFFF;}
+a:visited {color:#FFFFFF;}
+a:hover {color:#FFFFFF;}
+a:active {color:#FFFFFF;}
+-->
+img {
+  padding: 2px;
+
+}
+
+</style>
+
+
+
+
+<Script language="JavaScript">
+function fchangeclass2(lparam){
+   lparam.className = 'main_mo';
+}
+function fchangeclassl2(lparam){
+   lparam.className = 'main';
+}
+	</Script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onunload="fWinOnUnload();">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#666666" height="100%">
+  <tr valign="middle">
+    <td bgcolor="#FFFFFF" align="center" valign="middle">
+      <table width="700" border="0" cellspacing="1" cellpadding="0" bgcolor="#44197e">
+        <tr>
+          <td bgcolor="#FFFFFF">
+            <table border=0 cellpadding=0 cellspacing=0 width="700" align="center">
+              <tr>
+                <td height="45" bgcolor="#FFFFFF" align="left" valign="top"><img src="media/images/logo.png" width="176" height="33" alt="Encora Innovation Labs" /></td>              </tr>
+              <tr valign="middle">
+                <td height="23" bgcolor="#FFFFFF" align="left" valign="top">
+                  <table border="0" cellspacing="0" cellpadding="0" height="1" width="100%">
+                    <tr>
+                      <td class="clsLine" width="100%"><img src="Images/spacer.gif" width="1" height="1"></td>
+                    </tr>
+					<tr valign="middle">
+						<td height="30" bgcolor="#FFFFFF" align="left" class="clsLeftText">Encora Innovation Labs</td>
+					</tr>
+                  </table>
+                </td>
+              </tr>
+              <tr bgcolor="#60789F">
+                <td height="250" class="clsLeftText_small" align="center">
+                  <p>Please click ENTER to start</p>
+                  <p><br>
+                  </p>
+                  <table width="65" border="0" cellspacing="0" cellpadding="1" align="center">
+                    <tr>
+                      <td class="main" onMouseOver="javascript:fchangeclass2(this);" onMouseOut="javascript:fchangeclassl2(this);"><a href="#" onClick="javascript:newWindow();">ENTER</a></td>
+                       </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr valign="bottom">
+                <td height="30" bgcolor="#FFFFFF" valign="bottom">
+                  <p class="clsFootnote">Best viewed with Internet Explorer 9 to 11, IE-Edge, Latest version of Mozilla Firefox and Google Chrome.<br/>Minimum screen resolution 1024 x 768. </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

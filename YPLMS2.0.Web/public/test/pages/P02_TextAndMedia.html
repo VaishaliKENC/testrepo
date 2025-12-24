@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Page 1</title>
+
+	<style>
+
+		@font-face {
+			/*font-family: VerdanaCustom;
+			src: url("media/font/verdana.ttf");*/
+
+			font-family: VerdanaCustom;
+			src: url('media/font/verdana.eot');
+			src: url('media/font/verdana.eot?#iefix') format('embedded-opentype'),
+			url('media/font/verdana.ttf') format('truetype'),
+			url('media/font/verdana.svg#verdana') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			/*font-family: VerdanaBoldCustom;
+			src: url("media/font/verdanab.ttf");*/
+
+			font-family: VerdanaBoldCustom;
+			src: url('media/font/verdanab.eot');
+			src: url('media/font/verdanab.eot?#iefix') format('embedded-opentype'),
+			url('media/font/verdanab.ttf') format('truetype'),
+			url('media/font/verdanab.svg#verdanab') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		div.title {
+			font-size: 140%;
+			padding-top: 5%;
+			padding-left: 3%;
+			width: 45%;
+			color: #FFFFFF;
+		}
+
+		div.textcontent {
+			font-family: VerdanaBoldCustom,  Arial;
+			font-size: 115%;
+			padding-top: 3%;
+			padding-left: 3%;
+			width: 98%;
+			visibility: visible;
+			color: #FFF;
+		}
+
+		div.bullet1content {
+			font-family: VerdanaCustom,  Arial;
+			font-size: 115%;
+			padding-top: 0.65%;
+			padding-left: 2.5%;
+			width: 98%;
+			visibility: visible;
+			color: #FFF;
+		}
+
+		div.bullet2content {
+			font-family: VerdanaCustom,  Arial;
+			font-size: 115%;
+			padding-top: 0.65%;
+			padding-left: 5%;
+			width: 94%;
+			visibility: visible;
+			color: #FFF;
+		}
+
+		div.bkImage1 {
+			background-size:100% 100%;
+		    visibility: visible;
+		    position:absolute;
+		    width: 97.5%;
+		    height: 98.7%;
+			left: 1.2%;
+			top:1.2%;
+		}
+
+		ul {
+			margin: 0px 0px 0px 0px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+		}
+
+		li.leaf1 {
+			list-style-type: none;
+			min-height: auto;
+			height: auto;
+			width: auto;
+			list-style-image: url("media/images/bullet.png");
+			list-style-position: outside;
+		}
+
+		li.leaf2 {
+			list-style-type: none;
+			min-height: auto;
+			height: auto;
+			width: auto;
+			list-style-image: url("media/images/subBullet.png");
+			list-style-position: outside;
+		}
+		
+		.videocontainer {
+			display: block;
+			margin-left: 6%;		
+			margin-top: 3%;		
+		}
+		
+
+	</style>
+	<script>
+		var audioPath = "";
+		var currCue = 0;
+		var updateContentArray = [{ }];
+	</script>
+	<link href="pages/page.css" rel="stylesheet" type="text/css">
+	<script>
+		$(document).ready(function(){
+			if( !iOS ) {
+				manifest = [];
+			} else {
+				manifest = [];
+			}
+			if( audioPath != "" ) {
+				initializeJplayer(audioPath);
+			} else {
+				fnUpdatePageCompletionCounter(0);
+			}
+		});
+
+		function fnAudioFinishItemComp() {
+			if( iOS ) {
+				fnAudioFinishPageComp();
+				fnCheckAndMarkItemCompleted();
+			}
+		}
+
+		function fnCheckAndMarkItemCompleted() {
+			fnUpdatePageCompletionCounter(0);
+		}
+
+	</script>
+
+</head>
+
+<body>
+	<div class="pg-pageContent">
+		<div class="bkImage1" id="bg">
+			<div class="title">
+				Title
+			</div>
+			<div class="textcontent">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+			<div class="bullet1content"><ul><li class="leaf1">Phasellus non quam facilisis, fringilla justo sed, tempor diam. Nam hendrerit vulputate tellus at hendrerit. Mauris semper auctor tellus ac bibendum.</li></ul></div>
+			<div class="bullet1content"><ul><li class="leaf1">Nulla tortor urna, hendrerit sit amet odio quis, euismod iaculis est:</li></ul></div>
+
+			<div class="bullet2content"><ul><li class="leaf2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</li></ul></div>
+			<div class="bullet2content"><ul><li class="leaf2">Donec ultrices volutpat pulvinar. Nunc auctor mi non nulla imperdiet posuere. Quisque ac justo non ante ultrices placerat. Pellentesque non dignissim eros, ut bibendum lectus.</li></ul></div>
+			
+			<div class="videocontainer">
+				<video style='height:35%; width:45%;' controls autoplay>
+					<source src="pages/video/big_buck_bunny.mp4" type="video/mp4">				
+					Your browser does not support the video tag.
+				</video>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>
+

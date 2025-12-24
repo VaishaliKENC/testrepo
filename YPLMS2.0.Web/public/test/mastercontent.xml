@@ -1,0 +1,85 @@
+<COURSE>
+	<COURSETITLE><![CDATA[]]></COURSETITLE>
+	<!-- PLEASE MAINTAIN THE IDENTIFIER STANDARDS FOR EACH NODE AS IT HAS BEEN USED FOR DATA TRACKING ON LMS -->
+	<MODULE ID="M0" SHOWINMENU="" ISDISABLEINMENU="">
+		<MODULETITLE><![CDATA[Module 1 ]]></MODULETITLE>
+		<LESSON ID="M0L0" SHOWINMENU="" ISDISABLEINMENU="">
+			<LESSONTITLE><![CDATA[Lesson 01]]></LESSONTITLE>
+			<TOPIC ID="M0L0T0" SHOWINMENU="" ISDISABLEINMENU="">
+				<TOPICTITLE><![CDATA[Topic 01]]></TOPICTITLE>
+				<PAGE ID="M0L0T0P3" SHOWINMENU="" ISDISABLEINMENU="" XMLSRC="" PAGESRC="pages/P02_TextAndMedia.html" AUDIODISABLE="" BACKDISABLE="" NEXTDISABLE="" TRANSCRIPTDISABLE="" PLAYPAUSEDISABLE="" ISSKILLCHECK="" MAXCONDITION="1" ISVIDEO="Y">
+					<PAGETITLE><![CDATA[Page 01]]></PAGETITLE>
+				</PAGE>
+				<PAGE ID="M0L0T0P4" SHOWINMENU="" ISDISABLEINMENU="" XMLSRC="" PAGESRC="pages/P03_TextAndMedia.html" AUDIODISABLE="" BACKDISABLE="" NEXTDISABLE="" TRANSCRIPTDISABLE="" PLAYPAUSEDISABLE="" ISSKILLCHECK="" MAXCONDITION="1" ISVIDEO="Y">
+					<PAGETITLE><![CDATA[Page 02]]></PAGETITLE>
+				</PAGE>				
+			</TOPIC>
+		</LESSON>
+		<LESSON ID="M0L1" SHOWINMENU="" ISDISABLEINMENU="" ISSKILLCHECK="Y">
+			<LESSONTITLE><![CDATA[Assessment]]></LESSONTITLE>
+			<TOPIC ID="M0L1T0" SHOWINMENU="" ISDISABLEINMENU="" ISSKILLCHECK="Y">
+				<TOPICTITLE><![CDATA[Assessment]]></TOPICTITLE>
+				<TOPICTITLE><![CDATA[Topic 1]]></TOPICTITLE>
+				<PAGE ID="M0L1T0P0" SHOWINMENU="" ISDISABLEINMENU="" XMLSRC="" PAGESRC="pages/Assessment_Start.html" AUDIODISABLE="" BACKDISABLE="" NEXTDISABLE="" TRANSCRIPTDISABLE="" PLAYPAUSEDISABLE="" ISSKILLCHECK="" MAXCONDITION="1" ISVIDEO="Y">
+					<PAGETITLE><![CDATA[Assessment Intro]]></PAGETITLE>
+				</PAGE>
+				<PAGE ID="M0L1T0P1" SHOWINMENU="N" ISDISABLEINMENU="" XMLSRC="" PAGESRC="pages/mcq.html" AUDIODISABLE="" BACKDISABLE="" NEXTDISABLE="" TRANSCRIPTDISABLE="" PLAYPAUSEDISABLE="" ISSKILLCHECK="Y">
+					<PAGETITLE><![CDATA[Question 01]]></PAGETITLE>
+				</PAGE>
+				<PAGE ID="M0L1T0P2" SHOWINMENU="N" ISDISABLEINMENU="" XMLSRC="" PAGESRC="pages/mrq.html" AUDIODISABLE="" BACKDISABLE="" NEXTDISABLE="" TRANSCRIPTDISABLE="" PLAYPAUSEDISABLE="" ISSKILLCHECK="Y">
+					<PAGETITLE><![CDATA[Question 02]]></PAGETITLE>
+				</PAGE>
+				<PAGE ID="M0L1T0P3" SHOWINMENU="N" ISDISABLEINMENU="" XMLSRC="" PAGESRC="pages/Result.html" AUDIODISABLE="" BACKDISABLE="T" NEXTDISABLE="T" TRANSCRIPTDISABLE="" PLAYPAUSEDISABLE="" ISSKILLCHECK="" MAXCONDITION="1" ISVIDEO="Y">
+					<PAGETITLE><![CDATA[ ]]></PAGETITLE>
+				</PAGE>
+			</TOPIC>
+		</LESSON>
+		
+		
+	</MODULE>
+	
+	<GLOBAL>
+		<!-- GLOBAL ATTRIBUTES AND CONSTANTS WILL BE LISTED HERE -->
+	</GLOBAL>
+	<PRELOADDATA>
+		<PreloadFile Path="media/font/verdanab.ttf"/>
+		<PreloadFile Path="media/font/verdana.ttf"/>
+		
+		
+		<PreloadFile Path="media/images/preloader.gif"/>
+		<PreloadFile Path="media/images/logo.png"/>
+		<PreloadFile Path="css/blue.monday/btn_play.png"/>
+		<PreloadFile Path="css/blue.monday/btn_play_rollover.png"/>
+		<PreloadFile Path="css/blue.monday/btn_pause.png"/>
+		<PreloadFile Path="css/blue.monday/btn_pause_rollover.png"/>
+		<PreloadFile Path="css/blue.monday/jplayer.blue.monday.jpg"/>
+		<PreloadFile Path="css/blue.monday/jplayer.blue.monday.seeking.gif"/>
+		<PreloadFile Path="css/blue.monday/jplayer.blue.monday.video.play.png"/>
+		<PreloadFile Path="media/images/exit.jpg"/>
+		
+		<PreloadFile Path="media/images/pbar-ani.gif"/>
+		
+		<PreloadFile Path="media/images/btn_next.png"/>
+		<PreloadFile Path="media/images/btn_disNext.png"/>
+		<PreloadFile Path="media/images/btn_next_ani.gif"/>
+		<PreloadFile Path="media/images/btn_next_rollover.png"/>
+		<PreloadFile Path="media/images/btn_back.png"/>
+		<PreloadFile Path="media/images/btn_disBack.png"/>
+		<PreloadFile Path="media/images/btn_back_rollover.png"/>
+		
+		<PreloadFile Path="media/images/sub-menu-bg.png"/>
+		<PreloadFile Path="media/images/menu-status-visited.png"/>
+		<PreloadFile Path="media/images/menu-status-visited.png"/>
+		<PreloadFile Path="media/images/sub-menu-sel-bullet.png"/>
+		<PreloadFile Path="media/images/menu-bullet.png"/>
+		<PreloadFile Path="media/images/sub-menu-bullet.png"/>
+		<PreloadFile Path="media/images/menu-head-bg-ovr.png"/>
+		<PreloadFile Path="media/images/menu-bullet.png"/>
+		<PreloadFile Path="media/images/sub-menu-sel-bullet.png"/>
+		
+		<PreloadFile Path="media/images/sub-menu-bullet-down.png"/>
+		<PreloadFile Path="media/images/sub-menu-bullet.png"/>
+		<PreloadFile Path="media/images/sub-menu-bullet-down.png"/>
+		
+	</PRELOADDATA>
+</COURSE>

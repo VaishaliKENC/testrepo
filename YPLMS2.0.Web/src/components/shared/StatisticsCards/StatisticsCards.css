@@ -1,0 +1,31 @@
+
+
+.yp-learner-dashboard-stat-box {
+    display: flex;
+    align-items: center;    
+    gap: 35px;
+    padding: 24px 38px;
+    border-radius: 15px;
+}
+.yp-learner-dashboard-stat-box .yp-learner-dsb-icon-circle {
+    width: 58px;
+    height: 58px;
+    display: inline-flex;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.yp-learner-dashboard-stat-box .yp-learner-dsb-info-wrapper {
+    text-align: center;
+    margin-left: auto;
+}
+.yp-learner-dashboard-stat-box .yp-learner-dsb-info-count {
+    font-size: 32px;
+    font-weight: 600;
+    color: #000000;
+}
+.yp-learner-dashboard-stat-box .yp-learner-dsb-info-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: #666666;
+}
